@@ -1,3 +1,71 @@
+<!--
+Tu objetivo es crear una aplicación web básica que implemente un sistema de
+autenticación mediante una API RESTful utilizando PHP y HTML. Esta aplicación debe
+incluir las siguientes características:
+Características de la Aplicación
+1. Pantalla de Login:
+● Crea una página en HTML con un formulario donde el usuario introduzca:
+○ Nombre de usuario.
+○ Contraseña.
+● Al enviar el formulario, utiliza JavaScript y fetch para enviar las credenciales a un
+endpoint de tu API RESTful.
+● La API valida las credenciales ingresadas utilizando un array predefinido en PHP
+que simula una lista de usuarios.
+2. API RESTful:
+● Endpoint de autenticación (/api/login):
+○ Valida las credenciales ingresadas y, si son correctas, responde con un token
+(puedes usar una cadena generada con base64_encode).
+○ Si las credenciales son incorrectas, responde con un código de error HTTP
+(401 Unauthorized) y un mensaje descriptivo.
+
+3. Pantalla de Bienvenida:
+● Página HTML que muestra:
+○ Un mensaje personalizado con el nombre del usuario autenticado.
+○ La hora actual.
+○ Un mensaje de bienvenida adicional.
+● Obtiene los datos del usuario llamando a un endpoint protegido de la API
+(/api/welcome) que requiere un token de autenticación en la cabecera.
+4. Pantalla de "No Tienes Permisos":
+● Si alguien intenta acceder a la pantalla de bienvenida sin un token válido o estando
+no autenticado, la API responde con un código HTTP 403 Forbidden.
+● El cliente redirige automáticamente a una página que muestra el mensaje: "No
+tienes permisos para acceder a esta página".
+5. Funcionalidad para Cerrar Sesión:
+● En la pantalla de bienvenida, agrega un botón o enlace para cerrar sesión.
+● Al hacer clic, elimina el token almacenado en el cliente (usando localStorage).
+● Redirige al usuario a la pantalla de login.
+Requisitos Técnicos
+
+Curso: Desarrollo de Aplicaciones Aplicaciones
+Multiplataforma/Web
+Módulo Profesional: DWEC
+Profesor: Carlos Basulto Pardo
+
+1. Implementación de API RESTful en PHP:
+○ Usa rutas simples para manejar las solicitudes:
+■ POST /api/login: Valida credenciales y devuelve un token.
+■ GET /api/welcome: Responde con datos del usuario si el token es
+válido.
+
+○ Utiliza json_encode para devolver respuestas en formato JSON.
+2. Manejo de Sesiones en el Cliente:
+○ Usa localStorage para almacenar el token devuelto por el servidor.
+○ Envía el token en las cabeceras HTTP (Authorization: Bearer
+<token>) para todas las solicitudes protegidas.
+3. Validación de Credenciales en el Servidor:
+○ Usa un array predefinido en PHP para simular la lista de usuarios
+
+$usuarios = [
+["username" => "admin", "password" => "1234"],
+["username" => "user", "password" => "abcd"]
+];
+
+Redirecciones en el Cliente:
+● Si el servidor responde con un código de error (como 401 o 403), redirige
+automáticamente a la pantalla correspondiente.
+Implementa los endpoints /api/login y /api/welcome en PHP.
+Configura las páginas HTML para manejar los estados de autenticación.
+Prueba la aplicación usando un navegador o Postman para verificar el funcionamiento.-->
 <!DOCTYPE html>
 <html lang = "es">
     <head>
