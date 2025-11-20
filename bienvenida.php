@@ -27,7 +27,7 @@ $mensaje = "¡Bienvenido a la aplicación de ejemplo!";
 <h2 class="text-center">Pantalla de Bienvenida</h2>
 <p><strong>Usuario:</strong> <?= $usuario ?></p>
 <p><strong>Hora actual:</strong> <?= $hora ?></p>
-<p><?= $mensaje ?></p>
+<p>Bienvenido a la pagina de inicio</p>
 
 
 <a href="login.php" class="btn btn-danger mt-3">Cerrar sesión</a>
