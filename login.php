@@ -23,6 +23,32 @@ exit();
 $error = "Credenciales incorrectas";
 }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Verificar si el usuario existe en la lista
+    if (!isset($usuarios[$username])) {
+        // Usuario no registrado
+        header("Location: permisos.php");
+        exit();
+    }
+
+    // Verificar contraseña
+    if ($usuarios[$username] !== $password) {
+        // Contraseña incorrecta → también sin permisos
+        header("Location: permisos.php");
+        exit();
+    }
+
+    // Si llega aquí, usuario válido
+    $_SESSION['usuario'] = $username;
+    header("Location: bienvenida.php");
+    exit();
+}
+
 ?>
 
 
